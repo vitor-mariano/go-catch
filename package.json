@@ -1,0 +1,39 @@
+{
+  "name": "go-catch",
+  "version": "0.1.0",
+  "description": "Handle errors without try/catch, in the Go style",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/vitor-mariano/go-catch"
+  },
+  "keywords": [
+    "try",
+    "catch",
+    "go",
+    "error",
+    "handler",
+    "async",
+    "sync"
+  ],
+  "author": "Vítor Mariano",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.5",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.3.5"
+  },
+  "files": [
+    "dist/**/*"
+  ]
+}
