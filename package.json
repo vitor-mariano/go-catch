@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "description": "Handle errors without try/catch, in the Go style",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
     "test": "jest --config jestconfig.json"
   },
   "repository": {
