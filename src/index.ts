@@ -1,8 +1,16 @@
-export type Failable<T> = [T | null, Error | null];
+export type Failable<T> = [T | null, any];
 type PromisableFailable<T> = T extends PromiseLike<infer U> ? Promise<Failable<U>> : Failable<T>;
 type Await<T> = T extends PromiseLike<infer U> ? U : T;
 
-const goCatch =
+export async function goCatch<T>(promise: Promise<T>): Promise<Failable<T>> {
+  try {
+    return [await promise, null];
+  } catch (error) {
+    return [null, error];
+  }
+}
+
+export const goCatchWrap =
   <R, P extends any[] = any[]>(callback: (...args: P) => R): ((...args: P) => PromisableFailable<R>) =>
   (...args: P): PromisableFailable<R> => {
     try {
@@ -16,8 +24,6 @@ const goCatch =
 
       return [value, null] as PromisableFailable<R>;
     } catch (error) {
-      return [null, error as Error] as PromisableFailable<R>;
+      return [null, error] as PromisableFailable<R>;
     }
   };
-
-export default goCatch;

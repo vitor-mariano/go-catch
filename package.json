@@ -1,6 +1,6 @@
 {
   "name": "go-catch",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Handle errors without try/catch, in the Go style",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
