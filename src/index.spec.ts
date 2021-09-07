@@ -26,12 +26,12 @@ describe('goCatch', () => {
     const [stringifiedValue, stringifyError]: Failable<string> = await goCatch(asyncStringify)(expected);
     expect([stringifiedValue, stringifyError]).toEqual([input, null]);
   });
-  test('should return error on a synchronous functions', () => {
+  test('should return error on synchronous functions', () => {
     const [parsedData, error]: Failable<Expected> = goCatch<Expected>(JSON.parse)(invalidInput);
     expect(parsedData).toBeNull();
     expect(error).toBeInstanceOf(SyntaxError);
   });
-  test('should return error on a asynchronous functions', async () => {
+  test('should return error on asynchronous functions', async () => {
     const [parsedData, error]: Failable<Expected> = await goCatch<Promise<Expected>>(asyncParse)(invalidInput);
     expect(parsedData).toBeNull();
     expect(error).toBeInstanceOf(SyntaxError);
